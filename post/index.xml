@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Talha Waheed</title>
+    <link>https://talha0077.github.io/post/</link>
+    <description>Recent content in Posts on Talha Waheed</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 18 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://talha0077.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Working of the OS</title>
+      <link>https://talha0077.github.io/post/os/</link>
+      <pubDate>Sun, 18 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://talha0077.github.io/post/os/</guid>
+      <description>I will only explain, step by step, what we did, what it does and why we did it.
+Prerequisites  Visual Studio Code Docker Qemu  Step 1. Making the Docker Image We need to make a docker image that contains all of the necessary packages we need. For this we make a file named a Dockerfile. In this case we need nasm to compile our assembly code and grub. We can do this as follows:</description>
+    </item>
+    
+  </channel>
+</rss>
