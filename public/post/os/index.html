@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="map[name:Talha Waheed]">
+<meta name="description" content="I will only explain, step by step, what we did, what it does and why we did it.
+Prerequisites  Visual Studio Code Docker Qemu  Step 1. Making the Docker Image We need to make a docker image that contains all of the necessary packages we need. For this we make a file named a Dockerfile. In this case we need nasm to compile our assembly code and grub. We can do this as follows:" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://talha0077.github.io/post/os/" />
+
+
+    <title>
+        
+            Working of the OS :: Talha Waheed 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.eaf4f2571fc0260b30532ce37bc0e1c2107885bfec3b592755f30dba7741301e.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Working of the OS">
+<meta itemprop="description" content="I will only explain, step by step, what we did, what it does and why we did it.
+Prerequisites  Visual Studio Code Docker Qemu  Step 1. Making the Docker Image We need to make a docker image that contains all of the necessary packages we need. For this we make a file named a Dockerfile. In this case we need nasm to compile our assembly code and grub. We can do this as follows:"><meta itemprop="datePublished" content="2021-04-18T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-04-18T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1328"><meta itemprop="image" content="https://talha0077.github.io/"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://talha0077.github.io/"/>
+
+<meta name="twitter:title" content="Working of the OS"/>
+<meta name="twitter:description" content="I will only explain, step by step, what we did, what it does and why we did it.
+Prerequisites  Visual Studio Code Docker Qemu  Step 1. Making the Docker Image We need to make a docker image that contains all of the necessary packages we need. For this we make a file named a Dockerfile. In this case we need nasm to compile our assembly code and grub. We can do this as follows:"/>
+
+
+
+
+    <meta property="og:title" content="Working of the OS" />
+<meta property="og:description" content="I will only explain, step by step, what we did, what it does and why we did it.
+Prerequisites  Visual Studio Code Docker Qemu  Step 1. Making the Docker Image We need to make a docker image that contains all of the necessary packages we need. For this we make a file named a Dockerfile. In this case we need nasm to compile our assembly code and grub. We can do this as follows:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://talha0077.github.io/post/os/" /><meta property="og:image" content="https://talha0077.github.io/"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-18T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-04-18T00:00:00&#43;00:00" /><meta property="og:site_name" content="Talha Waheed" />
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-04-18 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">cd /Home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#4DA6A6;
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/about/">About</a></li><li><a href="/post/">Projects</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://talha0077.github.io/post/os/">Working of the OS</a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <p>I will only explain, step by step, what we did, what it does and why we did it.</p>
+<h1 id="prerequisites">Prerequisites</h1>
+<ul>
+<li><a href="https://code.visualstudio.com/download">Visual Studio Code</a></li>
+<li><a href="https://www.docker.com/products/docker-desktop">Docker</a></li>
+<li><a href="https://www.qemu.org/download/#windows">Qemu</a></li>
+</ul>
+<h2 id="step-1-making-the-docker-image">Step 1. Making the Docker Image</h2>
+<p>We need to make a docker image that contains all of the necessary packages we need. For this we make a file named a Dockerfile. In this case we need nasm to compile our assembly code and grub. We can do this as follows:</p>
+<pre><code>FROM randomdude/gcc-cross-x86_64-elf // Premade image on the docker website
+
+// Run these terminal commands in our linux virtual machine
+RUN apt-get update 
+RUN apt-get upgrade -y
+RUN apt-get install -y nasm
+RUN apt-get install -y xorriso
+RUN apt-get install -y grub-pc-bin
+RUN apt-get install -y grub-common
+
+VOLUME /root/env
+WORKDIR /root/env
+</code></pre><p>After this is done we run the following line in the VS Code terminal:</p>
+<pre><code>docker build {Name of folder that has the Dockerfile} -t {Tag of image (your choice)}
+</code></pre><p>Now our docker image has been built. To create an instance of this image we run the following command in the terminal:</p>
+<pre><code>docker run --rm -it -v &quot;%cd%&quot;:/root/env {Tag of image you gave above}
+</code></pre><p>After running the above command we gain access to the virtual linux machine which is a docker container. It has all of the packages we need as we made a dockerfile above that ran all of the commands that downloaded them.</p>
+<h2 id="step-2-making-the-multiboot-header">Step 2. Making the Multiboot Header</h2>
+<p>We move on to the multiboot header file. This file provides the necessary information to the bootloader about what it should be expecting, where to load the operating system from and how to do it.</p>
+<p>Our multiboot header looks like this:</p>
+<pre><code>section .multiboot_header
+header_start:
+	; magic number for multiboot2
+	dd 0xe85250d6 
+	; architecture
+	dd 0 ; protected mode 
+	; header length
+	dd header_end - header_start
+	; checksum
+	dd 0x100000000 - (0xe85250d6 + 0 + (header_end - header_start))
+
+	; end tag
+	dw 0
+	dw 0
+	dd 8
+header_end:
+</code></pre><p>The magic number is what tells the bootloader about multiboot2. Multiboot2 is basically an interface that tells the bootloader how it should be doing things.</p>
+<p>You might think, since we have a magic number why do we also need a checksum. When loading the operating system this magic can appear anywhere which can cause the bootloader to think that it might be reading a header so we include a checksum with it to help the bootloader verify the actual multiboot header.</p>
+<h2 id="step-3-printing-ok-on-our-screen">Step 3. Printing OK on our Screen</h2>
+<p>We make an assembly file by the name <strong>main</strong> so we can run it and print <strong>ok</strong> on our screen when we emulate our operating system. For this we do the following:</p>
+<pre><code>global start ; global so we can access it from anywhere
+
+section .text
+bits 32 ; our os is still in 32 bit mode
+start:
+    mov dword [0bx8000], 0x2f4b2f4f ; 0bx8000 is where the video memory starts and 
+    we are putting 0x2f4b2f4f, which represents OK, in it
+
+    hlt ; stop the cpu from executing further
+</code></pre><h2 id="step-4-the-linker-file">Step 4. The Linker File</h2>
+<p>For now we are done with the assembly code for the operating system because we convert it to 64-bit later on. Currently, we are moving on to making the linker file. The linker file basically has the order in which our operating system will be <strong>linked</strong> for example we define the entry or starting point, then step by step we define which section to call and execute. Our linker files looks like this:</p>
+<pre><code>ENTRY(start)
+
+SECTIONS
+{
+	. = 1M;
+	.boot :
+	{
+		KEEP(*(.multiboot_header)) 
+	}
+	.text :
+	{
+		*(.text)
+	}
+}
+</code></pre><p>In the very first line we are telling the bootloader to start from the <strong>start</strong> label which is declared in the main.asm file (where the printing happens). We defined the <strong>.multiboot_header</strong> section in step 2 and <strong>.text</strong> sectoin in step 3. The <strong>.1M</strong> is just to align the memory 1 Megabyte further, it is just a convention.</p>
+<h2 id="step-5-the-makefile">Step 5. The Makefile</h2>
+<p>The makefile contains all of our shell commands that we want to run when compiling or recompiling our code. The makefile makes sure to only update those object files which have been updated which makes it fast and efficient. Without a makefile this is a time consuming task.
+Our make file looks like this:</p>
+<pre><code>x86_64_asm_source_files := $(shell find src/impl/x86_64 -name *.asm)
+x86_64_asm_object_files := $(patsubst src/impl/x86_64/%.asm, build/x86_64/%.o, $(x86_64_asm_source_files))
+
+$(x86_64_asm_object_files): build/x86_64/%.o : src/impl/x86_64/%.asm
+	mkdir -p $(dir $@) &amp;&amp; \
+	nasm -f elf64 $(patsubst build/x86_64/%.o, src/impl/x86_64/%.asm, $@) -o $@
+
+.PHONY: build-x86_64
+build-x86_64: $(x86_64_asm_object_files)
+	mkdir -p dist/x86_64 &amp;&amp; \
+	x86_64-elf-ld -n -o dist/x86_64/kernel.bin -T targets/x86_64/linker.ld $(x86_64_asm_object_files) &amp;&amp; \
+	cp dist/x86_64/kernel.bin targets/x86_64/iso/boot/kernel.bin &amp;&amp; \
+	grub-mkrescue /usr/lib/grub/i386-pc -o dist/x86_64/kernel.iso targets/x86_64/iso
+</code></pre><p>These commands look scary but let&rsquo;s break it down. First, we make variables to store the data of all of our source files and object files. Then we move on to the <strong>dependency line</strong>. The part before the colon is the dependency or target file, in this case it is <strong>x86_64_asm_object_files</strong>, the variable that has all the data of our object files. The part after the colon, in this case <strong>build/x86_64/%.o</strong> and <strong>src/impl/x86_64/%.asm</strong>, is/are the source file(s). This means if any of those two change then recompile. Here we are using wildcard operators to define the names of the source files so any file with the <strong>.asm</strong> or <strong>.o</strong> extension will be considered.</p>
+<h2 id="step-6-running-our-first-os">Step 6. Running our First OS</h2>
+<p>Now we are ready to test our initial build of our operating system. Open the terminal and type</p>
+<pre><code>make build-x86_64
+</code></pre><p><strong>build-x86_64</strong> is the phony command we made in our make file. When docker finishes the execution, the <strong>.iso</strong> file will appear in the dist folder in your project folder (we wrote shell commands in the makefile to do so).
+Finally, we will use Qemu to emulate our operating system. Type exit in the terminal and press enter to exit out of docker. Then type the following command:</p>
+<pre><code>qemu-system-x86_64 -cdrom {Path to kernel.iso file}
+</code></pre><p>A window should pop up on the screen with the text <strong>ok</strong> in the top left corner.
+Now in the following steps we convert the operating system into a 64-bit one.</p>
+<h1 id="converting-to-64-bit-mode">Converting to 64-bit Mode</h1>
+<h2 id="step-1-modifying-the-mainasm-file">Step 1. Modifying the main.asm File</h2>
+<p>There is a lot of assembly code to be modified in this file (more than a 100 lines) so I will only be explaining the summary of our modifications here.<br>
+<!-- raw HTML omitted --> We setup checks whether the CPU supports long mode or not. Long mode means that whether the CPU can access 64-bit addresses and registers. To convert to 64-bit mode we must setup paging. Paging basically means to make page tables that map virtual addresses like 1, 2, 3, etc to physical addresses like 0x2004, 0x2006, etc. To setup page tables we need a global descriptor table. The global descriptor table contains all of the access rights, properties and size of data or code segments of the various areas in the computers memory.</p>
+<h2 id="step-2-making-our-own-print-header-file">Step 2. Making our Own Print Header File</h2>
+<p>We just need to make our print header file so we can print anything on the screen instead of just <strong>ok</strong>. For this we write some C code and use the video buffer memory to print the characters. As previously discussed that the video memory begins from 0xb8000 so we store this address in the <strong>buffer</strong> variable (it&rsquo;s actually an array). We then just simply store a character at the required index in the buffer to display it on the screen. In the end we just define a <strong>kernal_main</strong> function that is called after our OS boots to print everything we require.</p>
+<h2 id="step-3-necessary-modifications-in-the-makefile">Step 3. Necessary Modifications in the Makefile</h2>
+<p>In the end we just have to add build commands to accomodate our C source files, for this we use the gcc compiler, and kernel files. After the modifications are complete just run the following commands:</p>
+<pre><code>docker run --rm -it -v &quot;%cd%&quot;:/root/env myos-buildenv
+</code></pre><p>Then run:</p>
+<pre><code>make build-x86_64
+</code></pre><p>A window should pop up with the characters printed on the screen. You can modify the <strong>main.c</strong> file to print whatever you want.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://talha0077.github.io/">Talha Waheed</a></span>
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span><span><a href="https://talha0077.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span> </span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js" integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
+
+
+
+    </body>
+</html>
